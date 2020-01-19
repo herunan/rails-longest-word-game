@@ -8,17 +8,17 @@ class GamesController < ApplicationController
 
   def score
     @input = params[:guess].upcase
-    @outputLetters = params[:grid]
-    @score = @input.chars.all? do |letter|
-    binding.pry
-      @input.count(letter) <= @outputLetters.count(letter)
+    @grid = params[:grid]
+    @match = @input.chars.all? do |letter|
+      @input.count(letter) <= @grid.count(letter)
     end
+    @dictionary = english_word?(@input)
+    @splitGrid = @grid.split('').join(', ')
   end
 
-  # def english_word?(word)
-  #   response = open("https://wagon-dictionary.herokuapp.com/#{word}")
-  #   json = JSON.parse(response.read)
-  #   return json['found']
-  # end
-
+  def english_word?(word)
+    response = open("https://wagon-dictionary.herokuapp.com/#{word}")
+    json = JSON.parse(response.read)
+    return json['found']
+  end
 end

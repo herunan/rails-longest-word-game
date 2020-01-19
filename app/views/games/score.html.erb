@@ -1,4 +1,12 @@
 <h1>Result</h1>
-<p><%= @input %></p>
-<p><%= @outputLetters %></p>
-<p><%= @score %></p>
+<% if @match %>
+  <% if @dictionary %>
+    <p><strong>Congratulations! </strong><%= @input %> is a valid English word!</p>
+  <% else %>
+    <p>Sorry, but <strong><%= @input %></strong> does not seem to be a valid English word.</p>
+  <% end %>
+<% else %>
+  <p>Sorry, but <strong><%= @input %></strong> can'be built out of <%= @splitGrid %>.</p>
+<% end %>
+<%= link_to "Play again", new_path %>
+

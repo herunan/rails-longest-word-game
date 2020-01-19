@@ -5,13 +5,13 @@ $blue: #3397DC;
 $dark-blue: #2C85C1;
 
 body {
-
+  font-family: 'Arial'
 }
 
 #letters {
-  margin-left: none;
-  list-style: none;
+  padding: 0;
   li {
+    list-style: none;
     display: inline-block;
     border: 1px solid $dark-blue;
     background: $blue;
